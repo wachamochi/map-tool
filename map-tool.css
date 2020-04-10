@@ -1,0 +1,105 @@
+/*　"すべて" を指定し世界を "初期化" */
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+  }
+/* ページの向こう側を闇に葬る*/
+html,body{
+ overflow: hidden;
+}
+
+/* 素材画像を表示するキャンバスの設定*/
+#canvas{
+  float:right;
+  overflow-y:scroll;
+  }
+  
+/* ブラウザだけで動くマップ作成ツールの設定*/
+#title{
+  font-size:200%;
+  color:pink;
+  -webkit-text-stroke: 1px black;
+  text-stroke:1px black;
+  }
+/* 押したら起動するタイプのラベル2つの設定*/
+#menu,#ope_label{
+  cursor:pointer;
+  position:absolute;
+  bottom:0px;
+  width:300px;
+  height:50px;
+  transition: .8s;
+  }
+#menu:hover,
+#ope_label:hover{
+  opacity: .7;
+  }
+/* メニューを表示するラベルは左側に*/
+#menu{
+  right:300px;
+  background-color:pink;
+      }
+/* 操作方法を表示するラベルは右側に*/
+#ope_label{
+  right:0px;
+  background-color:lightblue;
+  }
+/* メニューや操作方法を起動するinputダグはは表示しない*/
+input #trans,#ope{
+  display:none;
+  }
+/* メニューを表示させるラベルの直後のdivタグのdefault設定*/
+#trans+div{
+ position:absolute;
+ bottom: -73px;
+ transition:.8s;
+  }
+/* 動いたあとの設定*/
+#trans:checked+div{
+  bottom: 3px;
+  }
+/* メニュー + タイトルの設定 */
+#main-menu{
+ background-color:white;
+ padding:0 12px;
+}
+/*操作方法要素(labelの直後)のdefault設定*/
+#ope+div{
+ position:absolute;
+ transition:.8s;
+ background-color:white;
+ top:-50%;
+ left:50%;
+ transform: translateY(-50%) translateX(-50%);
+ -webkit- transform: translateY(-50%) translateX(-50%);
+ opacity:0;
+  }
+/* 操作方法要素の起動あとの設定 */
+#ope:checked+div{
+  /*left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  margin: auto;
+  width: 80%;
+  height: 50%;*/
+  top:50%;
+  opacity:1.0;
+  }
+/* 操作方法リストの設定*/
+#list{ counter-reset: li_count;    /* カウンタをセット */}
+/* リストの番号をつける(ここらへんコピペ)*/
+.ope_list:before{
+  counter-increment: li_count;  /* カウンタの値を計算していく */
+  content: counter(li_count)"."; /* 数字出力 */
+  color: blue;               /* 文字色指定 */
+  margin-right: 5px;            /* 余白指定 */
+  }
+.ope_list{
+  font-size: 30px ;
+  }
+/*操作解説の設定*/
+.rule{
+  font-size: 20px;
+  }
